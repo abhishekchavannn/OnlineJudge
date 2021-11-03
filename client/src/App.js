@@ -13,8 +13,13 @@ function App() {
     try {
       const { data } = await axios.post("http://localhost:5000/run", payload);
       setOutput(data.output);
-    } catch (err) {
-      console.log(err.response);
+    } catch ({response}) {
+      if(response){
+        const errorMsg = response.data.err.stderr;
+        setOutput(errorMsg);
+        console.log(response);
+      } else{
+       setOutput("Error connection to the Server :(");}
     }
   };
   return (
