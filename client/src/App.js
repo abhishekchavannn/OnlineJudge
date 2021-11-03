@@ -100,7 +100,7 @@ function App() {
 
       <div className="settings">
       <div className="selectLanguage">
-      <label>Select Language: </label>
+      <label>Language: </label>
         <select
           value={language}
           onChange={(e) => {
@@ -128,13 +128,13 @@ function App() {
           <div className="codeBox">
         <div className="TopBar">
         <div className="tools">
-          <FontAwesomeIcon icon={faCircle} />{" "}
-          <FontAwesomeIcon icon={faCircle} />{" "}
-          <FontAwesomeIcon icon={faCircle} />
+          <FontAwesomeIcon icon={faCircle} className="redIcon"/>{" "}
+          <FontAwesomeIcon icon={faCircle} className="yellowIcon"/>{" "}
+          <FontAwesomeIcon icon={faCircle} className="greenIcon"/>
 
         </div>
         <div className = "codeHeading">
-            <input placeholder="Untitled" className="codeTitleInput"></input>
+            <input placeholder="My title" className="codeTitleInput"></input>
         </div>
         </div>
 
@@ -145,11 +145,13 @@ function App() {
       <br />
         <div className="CodeEditor">
        <textarea
-        rows="35"
-        cols="100"
+        rows="30"
+            cols="90"
+       spellCheck="false"
         placeholder="Write your code here"
-        value={code}
-        id="my-textarea"
+         value={code}
+         spellcheck="false"
+       
         onChange={(e) => {
           setCode(e.target.value);
         }}
