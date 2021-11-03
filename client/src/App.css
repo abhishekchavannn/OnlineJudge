@@ -1,36 +1,56 @@
 
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1{
+      text-align: center;
+      font-family: 'Bukhari Script', sans-serif;
+      font-size: 70px;
+      font-weight: 500;
+      position: relative;
+      top: 0px;
+      color: #332A3E;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  background-image: linear-gradient(#C4A4F6, #A890FB);
+  background-repeat: no-repeat;
+  height: 100vh;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h2{
+    text-align: center;
+    font-family: 'Poppins';
+    font-weight: 800;
+    color: #332A3E;
+}
+.settings{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 50px;
+}
+.tools{
+  display: flex;
+  
+ position: relative;
+ left: -200px;
+ gap: 10px;
+}
+.codeHeading{
+  position: relative;
+  left: -50px;
+}
+.codeHeading:focus{
+  outline: none;
+  
+}
+.TopBar{
+  
+  display: flex;
+  flex-direction: row;
+  
+}
+.codeBox{
+ display: flex;
+ flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  padding: 0 5% 0 5%;
+ 
+  
 }

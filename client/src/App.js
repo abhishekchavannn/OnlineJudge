@@ -1,8 +1,10 @@
 import "./App.css";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import stubs from "./defaultStubs";
-import moment from 'moment';
+import moment from "moment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faUndoAlt, faCircle } from "@fortawesome/free-solid-svg-icons";
 function App() {
   const [code, setCode] = useState("");
   const [output, setOutput] = useState("");
@@ -11,41 +13,38 @@ function App() {
   const [jobId, setJobId] = useState("");
   const [jobDetails, setJobDetails] = useState(null);
 
-  useEffect(()=>{
-    const defaultLang = localStorage.getItem("default-language") || "cpp"
+  useEffect(() => {
+    const defaultLang = localStorage.getItem("default-language") || "cpp";
     setLanguage(defaultLang);
-  },[])
-  useEffect(()=>{
+  }, []);
+  useEffect(() => {
     setCode(stubs[language]);
-  },[language])
+  }, [language]);
 
- 
-  const setDefaultLanguage = () =>{
+  const setDefaultLanguage = () => {
     localStorage.setItem("default-language", language);
-    console.log(`${language} is set as a default language!`)
-  }
+    console.log(`${language} is set as a default language!`);
+  };
 
-  const renderTimedetails = () =>{
-    if(!jobDetails)
-      return "";
+  const renderTimedetails = () => {
+    if (!jobDetails) return "";
 
-      let result = '';
-      let {sumbittedAt, completedAt, startedAt} = jobDetails;
-     
-      sumbittedAt = moment(sumbittedAt).toString()
-      result += `Submitted At: ${sumbittedAt}`;
-      if(!completedAt || !startedAt){
-        return result;
-      }
-      const start = moment(startedAt);
-      const end = moment(completedAt);
-      const execTime = end.diff(start, 'seconds', true);
-      result += ` Execution Time: ${execTime} s`;
+    let result = "";
+    let { sumbittedAt, completedAt, startedAt } = jobDetails;
 
+    sumbittedAt = moment(sumbittedAt).toString();
+    result += `Submitted At: ${sumbittedAt}`;
+    if (!completedAt || !startedAt) {
       return result;
-    // return JSON.stringify(jobDetails);
-  }
+    }
+    const start = moment(startedAt);
+    const end = moment(completedAt);
+    const execTime = end.diff(start, "seconds", true);
+    result += ` Execution Time: ${execTime} s`;
 
+    return result;
+    // return JSON.stringify(jobDetails);
+  };
 
   const handleSubmit = async () => {
     const payload = {
@@ -96,17 +95,19 @@ function App() {
   };
   return (
     <div className="App">
-      <h1>Online Judge</h1>
-      <div>
-        <label>Select Language: </label>
+      <h1>Vrocode</h1>
+      <h2>Practice here on our Online judge</h2>
+
+      <div className="settings">
+      <div className="selectLanguage">
+      <label>Select Language: </label>
         <select
           value={language}
           onChange={(e) => {
             let response = window.confirm(
               "WARNING! Switching to other language will result in loss of code, Do want us to switch?"
             );
-            if(response)
-            setLanguage(e.target.value);
+            if (response) setLanguage(e.target.value);
             // console.log(e.target.value);
           }}
         >
@@ -114,26 +115,60 @@ function App() {
           <option value="py">Python</option>
         </select>
       </div>
-      <br/>
-      <div>
-        <button onClick={setDefaultLanguage}>Set Default</button> 
+
+      <div className = "setDefault">
+        <button onClick={setDefaultLanguage}>
+          {" "}
+          <FontAwesomeIcon icon={faUndoAlt} /> Set Default
+        </button>
       </div>
+      </div>
+
+          <br/>
+          <div className="codeBox">
+        <div className="TopBar">
+        <div className="tools">
+          <FontAwesomeIcon icon={faCircle} />{" "}
+          <FontAwesomeIcon icon={faCircle} />{" "}
+          <FontAwesomeIcon icon={faCircle} />
+
+        </div>
+        <div className = "codeHeading">
+            <input placeholder="Untitled" className="codeTitleInput"></input>
+        </div>
+        </div>
+
+
+        
+        
+   
       <br />
-      <textarea
-        rows="50"
-        cols=" 100"
+        <div className="CodeEditor">
+       <textarea
+        rows="35"
+        cols="100"
         placeholder="Write your code here"
         value={code}
+        id="my-textarea"
         onChange={(e) => {
           setCode(e.target.value);
         }}
-      ></textarea>
+        ></textarea>
+        </div>
+      </div>
+      
+
+
       <br />
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit}>
+        {" "}
+        <FontAwesomeIcon icon={faPlay} />
+        Submit
+      </button>
       <p>{status}</p>
       <p>{jobId && `JobID: ${jobId}`}</p>
       <p>{renderTimedetails()}</p>
-      
+
       <p>{output}</p>
     </div>
   );
