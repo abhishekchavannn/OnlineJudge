@@ -2,9 +2,10 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+
 const { generateFile } = require("./generateFile");
-const { executeCpp } = require("./executeCpp");
-const { executePy } = require("./executePy");
+
+const { addJobToQueue } = require("./jobQueue");
 const Job = require("./models/Job");
 
 mongoose.connect("mongodb://localhost:27017/compilerapp", (err) => {
@@ -52,34 +53,16 @@ app.post("/run", async (req, res) => {
 
     job = await new Job({ language, filepath }).save();
     const jobId = job["_id"];
+    addJobToQueue(jobId);
     console.log(job);
     res.status(201).json({ success: true, jobId });
 
     //Run the file and send the response
     let output;
-
-    job["startedAt"] = new Date();
-    if (language === "cpp") {
-      output = await executeCpp(filepath);
-    } else {
-      output = await executePy(filepath);
-    }
-
-    job["completedAt"] = new Date();
-    job["status"] = "success";
-    job["output"] = output;
-
-    await job.save();
-    console.log(job);
-    // return res.json({ filepath, output });
-  } catch (err) {
-    job["completedAt"] = new Date();
-    job["status"] = "error";
-    job["output"] = JSON.stringify(err);
-    await job.save();
-    console.log(job);
-    // res.status(500).json({ err });
+  }catch(err){
+    return res.status(500).json({success: false, err: JSON.stringify(err)} )
   }
+
 });
 app.listen(5000, () => {
   console.log("Listening on port 5000");
