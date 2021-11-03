@@ -66,7 +66,7 @@ input::placeholder{
 .settings{
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  gap: 10px;
 }
 .tools{
   display: flex;
@@ -129,6 +129,7 @@ label{
   padding: 15px 0 15px 30px;
   display: flex;
   flex-direction: row;
+  font-family:'Poppins';
   align-items: center;
   width: 43%;
   position: relative;
@@ -145,6 +146,7 @@ select{
   background: rgba(36, 34, 37, 0.8);
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 9px );
+  font-family:'Poppins';
   -webkit-backdrop-filter: blur( 9px );
   border-radius: 5px;
   border: 1px solid rgba(184, 181, 181, 0.829);
@@ -156,6 +158,42 @@ select{
   cursor: pointer;
   
 }
+.ButtonSetDefault{
+  margin-left:430px;
+  padding: 18px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fd291e;
+ font-family:'Poppins';
+  font-size: 15px;
+  background: rgba(187, 43, 17, 0.253);
+  backdrop-filter: blur( 9px );
+  -webkit-backdrop-filter: blur( 9px );
+  transition: 0.7s;
+}
+.ButtonSetDefault:hover{
+  background: rgba(187, 42, 17, 0.39);
+}
 option{
-
+  border-radius: 10px;
+}
+.submitButton{
+  margin-left:1px;
+  padding: 18px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #64fbb0;
+ font-family:'Poppins';
+  font-size: 15px;
+  background: rgba(25, 206, 136, 0.253);
+  backdrop-filter: blur( 9px );
+  -webkit-backdrop-filter: blur( 9px );
+  transition: 0.7s;
+}
+.submitButton:hover{
+  background: rgba(25, 206, 136, 0.43);
 }

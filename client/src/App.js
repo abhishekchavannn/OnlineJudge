@@ -99,79 +99,77 @@ function App() {
       <h2>Practice here on our Online judge</h2>
 
       <div className="settings">
-      <div className="selectLanguage">
-      <label>Language: </label>
-        <select
-          value={language}
-          onChange={(e) => {
-            let response = window.confirm(
-              "WARNING! Switching to other language will result in loss of code, Do want us to switch?"
-            );
-            if (response) setLanguage(e.target.value);
-            // console.log(e.target.value);
-          }}
-        >
-          <option value="cpp">C++</option>
-          <option value="py">Python</option>
-        </select>
-      </div>
+        <div className="selectLanguage">
+          <label>Language: </label>
+          <select
+            value={language}
+            onChange={(e) => {
+              let response = window.confirm(
+                "WARNING! Switching to other language will result in loss of code, Do want us to switch?"
+              );
+              if (response) setLanguage(e.target.value);
+              // console.log(e.target.value);
+            }}
+          >
+            <option value="cpp">C++</option>
+            <option value="py">Python</option>
+          </select>
+        </div>
 
-      <div className = "setDefault">
-        <button onClick={setDefaultLanguage}>
-          {" "}
-          <FontAwesomeIcon icon={faUndoAlt} /> Set Default
+        <div className="setDefault">
+          <button onClick={setDefaultLanguage} className="ButtonSetDefault">
+            Set Default {"  "}
+            <FontAwesomeIcon icon={faUndoAlt} />
+          </button>
+        </div>
+
+        <button onClick={handleSubmit} className="submitButton">
+          <FontAwesomeIcon icon={faPlay} />
+          {"   "}
+          Run Code
         </button>
       </div>
-      </div>
 
-          <br/>
-          <div className="codeBox">
+      <br />
+      <div className="codeBox">
         <div className="TopBar">
-        <div className="tools">
-          <FontAwesomeIcon icon={faCircle} className="redIcon"/>{" "}
-          <FontAwesomeIcon icon={faCircle} className="yellowIcon"/>{" "}
-          <FontAwesomeIcon icon={faCircle} className="greenIcon"/>
-
-        </div>
-        <div className = "codeHeading">
+          <div className="tools">
+            <FontAwesomeIcon icon={faCircle} className="redIcon" />{" "}
+            <FontAwesomeIcon icon={faCircle} className="yellowIcon" />{" "}
+            <FontAwesomeIcon icon={faCircle} className="greenIcon" />
+          </div>
+          <div className="codeHeading">
             <input placeholder="My title" className="codeTitleInput"></input>
-        </div>
+          </div>
         </div>
 
-
-        
-        
-   
-      <br />
+        <br />
         <div className="CodeEditor">
-       <textarea
-        rows="30"
+          <textarea
+            rows="30"
             cols="90"
-       spellCheck="false"
-        placeholder="Write your code here"
-         value={code}
-         spellcheck="false"
-       
-        onChange={(e) => {
-          setCode(e.target.value);
-        }}
-        ></textarea>
+            spellCheck="false"
+            placeholder="Write your code here"
+            value={code}
+            spellcheck="false"
+            onChange={(e) => {
+              setCode(e.target.value);
+            }}
+          ></textarea>
         </div>
       </div>
-      
-
 
       <br />
-      <button onClick={handleSubmit}>
-        {" "}
-        <FontAwesomeIcon icon={faPlay} />
-        Submit
-      </button>
-      <p>{status}</p>
-      <p>{jobId && `JobID: ${jobId}`}</p>
-      <p>{renderTimedetails()}</p>
+      <div className="output">
+        <p>{status}</p>
+        <p>{jobId && `JobID: ${jobId}`}</p>
+        <p>{renderTimedetails()}</p>
 
-      <p>{output}</p>
+        <p>{output}</p>
+      </div>
+      {/* <div className="run"> 
+    
+      </div> */}
     </div>
   );
 }
