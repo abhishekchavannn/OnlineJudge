@@ -6,15 +6,15 @@ h1{
       font-family: 'Bukhari Script', sans-serif;
       font-size: 70px;
       font-weight: 500;
-      top: 0px;
       padding: 0;
-      margin: 10px;
+      margin: 20px;
       margin-bottom: 35px;
       color: #332A3E;
 }
 body{
   background-image: linear-gradient(#C4A4F6, #A890FB);
   background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 100vh;
 }
 h2{
@@ -22,7 +22,7 @@ h2{
     font-family: 'Poppins';
     font-weight: 800;
     color: #332A3E;
-    margin: 2px 0 20px 0;
+    margin: 2px 0 80px 0;
     margin-top: 2px;
     
 }
@@ -44,7 +44,8 @@ textarea{
   color: #7BBD9B;
   border:none;
   outline: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 13px;
   font-family: 'Cousine', monospace;
   position: sticky;
   margin: auto;
@@ -196,4 +197,56 @@ option{
 }
 .submitButton:hover{
   background: rgba(25, 206, 136, 0.43);
+}
+
+.output{
+  background: rgba(36, 34, 37, 0.8);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 9px );
+  font-family:'Poppins';
+  -webkit-backdrop-filter: blur( 9px );
+  border-radius: 10px;
+  border: 1px solid rgba(184, 181, 181, 0.829);
+  padding: 20px;
+  color: rgba(184, 181, 181, 0.829);
+  transition: 0.5s;
+  width: 43%;
+  position: relative;
+  margin: auto;
+ 
+}
+.outputText{
+  margin-bottom: 20px;
+  
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.Output{
+  font-family: 'Cousine', monospace;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.status{
+  margin-bottom: 20px;
+  font-family: 'Cousine', monospace;
+}
+.exec{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Cousine', monospace;
+}
+.jobId{
+  font-family: 'Cousine', monospace;
+}
+
+footer{
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Poppins';
+  text-align: center;
+  margin-top: 10%;
+  background-color: #332A3E;
+  padding: 10%;
+  letter-spacing: 5px;
 }

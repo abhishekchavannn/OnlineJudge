@@ -32,15 +32,15 @@ function App() {
     let result = "";
     let { sumbittedAt, completedAt, startedAt } = jobDetails;
 
-    sumbittedAt = moment(sumbittedAt).toString();
-    result += `Submitted At: ${sumbittedAt}`;
+    // sumbittedAt = moment(sumbittedAt).toString();
+    // result += `Submitted At: ${sumbittedAt}`;
     if (!completedAt || !startedAt) {
       return result;
     }
     const start = moment(startedAt);
     const end = moment(completedAt);
     const execTime = end.diff(start, "seconds", true);
-    result += ` Execution Time: ${execTime} s`;
+    result += `${execTime}s`;
 
     return result;
     // return JSON.stringify(jobDetails);
@@ -96,7 +96,7 @@ function App() {
   return (
     <div className="App">
       <h1>Vrocode</h1>
-      <h2>Practice here on our Online judge</h2>
+      <h2>Practice here on our Online judge!</h2>
 
       <div className="settings">
         <div className="selectLanguage">
@@ -161,15 +161,22 @@ function App() {
 
       <br />
       <div className="output">
-        <p>{status}</p>
-        <p>{jobId && `JobID: ${jobId}`}</p>
-        <p>{renderTimedetails()}</p>
+        <p className="outputText">Output: </p>
+        <p className="Output">{output}</p>
+        <br/>
+        
+        <hr/>
+        <p className="exec">Execution Time: {renderTimedetails()}</p>
+        <p className="status">Status: {status}</p>
+        <p className="jobId">ID: {jobId && `${jobId}`}</p>
+        
 
-        <p>{output}</p>
+      
       </div>
-      {/* <div className="run"> 
-    
-      </div> */}
+      <footer>
+      Made with React | Team VroCode 💪
+        </footer>
+     
     </div>
   );
 }
